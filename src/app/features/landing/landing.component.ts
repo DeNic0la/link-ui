@@ -7,8 +7,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   template: `
     <main>
       <section>
-        <h1>Welcome to Link</h1>
-        <p>A simple, fast, and secure way to manage your links.</p>
+        <h1>Willkommen bei Link</h1>
+        <p>Ein einfacher, schneller und sicherer Weg, Ihre Links zu verwalten.</p>
       </section>
     </main>
   `,

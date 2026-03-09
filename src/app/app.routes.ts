@@ -13,4 +13,11 @@ export const routes: Routes = [
         (m) => m.SecureLinkRegistrationComponent,
       ),
   },
+  {
+    path: 'secured/:accessKey',
+    loadComponent: () =>
+      import('./features/secure-link-access/secure-link-access.component').then(
+        (m) => m.SecureLinkAccessComponent,
+      ),
+  },
 ];

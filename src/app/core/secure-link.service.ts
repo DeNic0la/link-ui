@@ -16,6 +16,11 @@ export interface SecureLinkResponse {
   accessLink: string;
 }
 
+export interface VerificationResponse {
+  error?: string;
+  targetLink?: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -25,5 +30,11 @@ export class SecureLinkService {
 
   registerSecureLink(request: SecureLinkRequest): Observable<SecureLinkResponse> {
     return this.http.post<SecureLinkResponse>(this.apiUrl, request);
+  }
+
+  checkSecureLink(accessKey: string, secondFactorKey: string): Observable<VerificationResponse> {
+    return this.http.get<VerificationResponse>(`${this.apiUrl}${accessKey}`, {
+      params: { secondFactorKey },
+    });
   }
 }

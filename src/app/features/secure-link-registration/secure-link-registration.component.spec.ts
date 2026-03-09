@@ -80,7 +80,9 @@ describe('SecureLinkRegistrationComponent', () => {
 
     component.onSubmit();
 
-    expect(component.error()).toBe('Failed to create secure link. Please try again.');
+    expect(component.error()).toBe(
+      'Sicherer Link konnte nicht erstellt werden. Bitte versuchen Sie es erneut.',
+    );
     expect(component.loading()).toBeFalsy();
   });
 });

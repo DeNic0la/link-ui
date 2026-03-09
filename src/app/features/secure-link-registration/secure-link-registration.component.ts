@@ -9,17 +9,17 @@ import { SecureLinkResponse, SecureLinkService } from '../../core/secure-link.se
   template: `
     <main>
       <section>
-        <h1>Register Secure Link</h1>
-        <p>Create a new link with an access key and a second factor key.</p>
+        <h1>Sicheren Link registrieren</h1>
+        <p>Erstellen Sie einen neuen Link mit einem Zugriffsschlüssel und einem zweiten Faktor.</p>
 
         <form [formGroup]="form" (ngSubmit)="onSubmit()" aria-labelledby="form-title">
           <div class="field">
-            <label for="accessKey">Access Key</label>
+            <label for="accessKey">Zugriffsschlüssel</label>
             <input
               id="accessKey"
               type="text"
               formControlName="accessKey"
-              placeholder="e.g. test-02"
+              placeholder="z.B. test-02"
               [attr.aria-invalid]="
                 form.controls.accessKey.invalid && form.controls.accessKey.touched
               "
@@ -27,12 +27,12 @@ import { SecureLinkResponse, SecureLinkService } from '../../core/secure-link.se
           </div>
 
           <div class="field">
-            <label for="targetLink">Target Link</label>
+            <label for="targetLink">Ziel-Link</label>
             <input
               id="targetLink"
               type="url"
               formControlName="targetLink"
-              placeholder="https://example.com"
+              placeholder="https://beispiel.de"
               [attr.aria-invalid]="
                 form.controls.targetLink.invalid && form.controls.targetLink.touched
               "
@@ -40,7 +40,7 @@ import { SecureLinkResponse, SecureLinkService } from '../../core/secure-link.se
           </div>
 
           <div class="field">
-            <label for="secondFactorKey">Second Factor Key</label>
+            <label for="secondFactorKey">Zweiter Faktor Schlüssel</label>
             <input
               id="secondFactorKey"
               type="password"
@@ -58,22 +58,22 @@ import { SecureLinkResponse, SecureLinkService } from '../../core/secure-link.se
 
           <button type="submit" [disabled]="form.invalid || loading()">
             @if (loading()) {
-              Creating...
+              Wird erstellt...
             } @else {
-              Create Secure Link
+              Sicheren Link erstellen
             }
           </button>
         </form>
 
         @if (result(); as res) {
           <div class="result" role="region" aria-live="polite">
-            <h2>Secure Link Created Successfully!</h2>
+            <h2>Sicherer Link erfolgreich erstellt!</h2>
             <p>
-              <strong>Access Link:</strong> <a [href]="res.accessLink">{{ res.accessLink }}</a>
+              <strong>Zugriffslink:</strong> <a [href]="res.accessLink">{{ res.accessLink }}</a>
             </p>
-            <p><strong>Access Key:</strong> {{ res.accessKey }}</p>
-            <p><strong>Target Link:</strong> {{ res.targetLink }}</p>
-            <p><strong>Second Factor Key:</strong> {{ res.secondFactorKeyRaw }}</p>
+            <p><strong>Zugriffsschlüssel:</strong> {{ res.accessKey }}</p>
+            <p><strong>Ziel-Link:</strong> {{ res.targetLink }}</p>
+            <p><strong>Zweiter Faktor Schlüssel:</strong> {{ res.secondFactorKeyRaw }}</p>
           </div>
         }
       </section>
@@ -228,7 +228,9 @@ export class SecureLinkRegistrationComponent {
       },
       error: (err) => {
         console.error('Registration failed', err);
-        this.error.set('Failed to create secure link. Please try again.');
+        this.error.set(
+          'Sicherer Link konnte nicht erstellt werden. Bitte versuchen Sie es erneut.',
+        );
         this.loading.set(false);
       },
     });
