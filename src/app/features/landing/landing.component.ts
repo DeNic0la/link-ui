@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   selector: 'app-landing',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [],
   template: `
     <main>
       <section>
@@ -31,12 +32,29 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     p {
       font-size: clamp(1rem, 4vw, 1.25rem);
       color: #4b5563;
+      margin-bottom: 2rem;
+    }
+    .button {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: #2563eb;
+      color: white;
+      text-decoration: none;
+      border-radius: 0.375rem;
+      font-weight: 600;
+      transition: background-color 0.2s;
+    }
+    .button:hover {
+      background-color: #1d4ed8;
     }
     @media (prefers-color-scheme: dark) {
       p {
         color: #9ca3af;
       }
+      h1 {
+        color: white;
+      }
     }
   `,
 })
-export class Landing {}
+export class LandingComponent {}

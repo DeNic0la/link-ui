@@ -9,7 +9,7 @@ import { RouterOutlet } from '@angular/router';
   `,
   styles: [],
 })
-export class App {
+export class AppComponent {
   constructor() {
   }
 
