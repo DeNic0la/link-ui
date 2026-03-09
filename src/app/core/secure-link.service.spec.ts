@@ -1,7 +1,7 @@
-import { TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
-import { provideHttpClientTesting, HttpTestingController } from '@angular/common/http/testing';
-import { SecureLinkService, SecureLinkRequest } from './secure-link.service';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
+import { SecureLinkRequest, SecureLinkService } from './secure-link.service';
 
 describe('SecureLinkService', () => {
   let service: SecureLinkService;
@@ -9,11 +9,7 @@ describe('SecureLinkService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        SecureLinkService,
-        provideHttpClient(),
-        provideHttpClientTesting(),
-      ],
+      providers: [SecureLinkService, provideHttpClient(), provideHttpClientTesting()],
     });
     service = TestBed.inject(SecureLinkService);
     httpMock = TestBed.inject(HttpTestingController);

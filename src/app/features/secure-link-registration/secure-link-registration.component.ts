@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { SecureLinkService, SecureLinkResponse } from '../../core/secure-link.service';
+import { SecureLinkResponse, SecureLinkService } from '../../core/secure-link.service';
 
 @Component({
   selector: 'app-secure-link-registration',
@@ -20,7 +20,9 @@ import { SecureLinkService, SecureLinkResponse } from '../../core/secure-link.se
               type="text"
               formControlName="accessKey"
               placeholder="e.g. test-02"
-              [attr.aria-invalid]="form.controls.accessKey.invalid && form.controls.accessKey.touched"
+              [attr.aria-invalid]="
+                form.controls.accessKey.invalid && form.controls.accessKey.touched
+              "
             />
           </div>
 
@@ -31,7 +33,9 @@ import { SecureLinkService, SecureLinkResponse } from '../../core/secure-link.se
               type="url"
               formControlName="targetLink"
               placeholder="https://example.com"
-              [attr.aria-invalid]="form.controls.targetLink.invalid && form.controls.targetLink.touched"
+              [attr.aria-invalid]="
+                form.controls.targetLink.invalid && form.controls.targetLink.touched
+              "
             />
           </div>
 
@@ -42,7 +46,9 @@ import { SecureLinkService, SecureLinkResponse } from '../../core/secure-link.se
               type="password"
               formControlName="secondFactorKey"
               placeholder="123456"
-              [attr.aria-invalid]="form.controls.secondFactorKey.invalid && form.controls.secondFactorKey.touched"
+              [attr.aria-invalid]="
+                form.controls.secondFactorKey.invalid && form.controls.secondFactorKey.touched
+              "
             />
           </div>
 
@@ -62,7 +68,9 @@ import { SecureLinkService, SecureLinkResponse } from '../../core/secure-link.se
         @if (result(); as res) {
           <div class="result" role="region" aria-live="polite">
             <h2>Secure Link Created Successfully!</h2>
-            <p><strong>Access Link:</strong> <a [href]="res.accessLink">{{ res.accessLink }}</a></p>
+            <p>
+              <strong>Access Link:</strong> <a [href]="res.accessLink">{{ res.accessLink }}</a>
+            </p>
             <p><strong>Access Key:</strong> {{ res.accessKey }}</p>
             <p><strong>Target Link:</strong> {{ res.targetLink }}</p>
             <p><strong>Second Factor Key:</strong> {{ res.secondFactorKeyRaw }}</p>
@@ -83,7 +91,9 @@ import { SecureLinkService, SecureLinkResponse } from '../../core/secure-link.se
       max-width: 500px;
       padding: 2rem;
       border-radius: 0.5rem;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      box-shadow:
+        0 4px 6px -1px rgb(0 0 0 / 0.1),
+        0 2px 4px -2px rgb(0 0 0 / 0.1);
       background: white;
     }
     h1 {
@@ -165,7 +175,9 @@ import { SecureLinkService, SecureLinkResponse } from '../../core/secure-link.se
         background: #1f2937;
         box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.5);
       }
-      h1, label, .result h2 {
+      h1,
+      label,
+      .result h2 {
         color: #f9fafb;
       }
       p {
@@ -187,7 +199,10 @@ export class SecureLinkRegistrationComponent {
 
   readonly form = new FormGroup({
     accessKey: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
-    targetLink: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.pattern(/^https?:\/\/.+/)] }),
+    targetLink: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required, Validators.pattern(/^https?:\/\/.+/)],
+    }),
     secondFactorKey: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
   });
 

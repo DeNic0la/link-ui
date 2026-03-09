@@ -1,8 +1,8 @@
-import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SecureLinkRegistrationComponent } from './secure-link-registration.component';
-import { SecureLinkService } from '../../core/secure-link.service';
 import { of, throwError } from 'rxjs';
+import { SecureLinkService } from '../../core/secure-link.service';
+import { SecureLinkRegistrationComponent } from './secure-link-registration.component';
 
 describe('SecureLinkRegistrationComponent', () => {
   let component: SecureLinkRegistrationComponent;
@@ -16,9 +16,7 @@ describe('SecureLinkRegistrationComponent', () => {
 
     await TestBed.configureTestingModule({
       imports: [SecureLinkRegistrationComponent, ReactiveFormsModule],
-      providers: [
-        { provide: SecureLinkService, useValue: secureLinkServiceSpy },
-      ],
+      providers: [{ provide: SecureLinkService, useValue: secureLinkServiceSpy }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SecureLinkRegistrationComponent);

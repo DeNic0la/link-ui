@@ -8,6 +8,9 @@ export const routes: Routes = [
   },
   {
     path: 'register-secure-link',
-    loadComponent: () => import('./features/secure-link-registration/secure-link-registration.component').then((m) => m.SecureLinkRegistrationComponent),
+    loadComponent: () =>
+      import('./features/secure-link-registration/secure-link-registration.component').then(
+        (m) => m.SecureLinkRegistrationComponent,
+      ),
   },
 ];
