@@ -1,5 +1,5 @@
-FROM node:20.13.1-alpine3.19 AS build
-RUN npm i -g pnpm@8.5.1
+FROM node:24.12.0-alpine3.22 AS build
+RUN npm i -g pnpm@10.28.0
 WORKDIR /app/src
 COPY package*.json ./
 COPY pnpm-lock.yaml ./
