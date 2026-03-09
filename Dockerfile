@@ -9,7 +9,7 @@ RUN pnpm run build --configuration production
 
 FROM nginxinc/nginx-unprivileged:mainline-alpine3.23-otel
 
-COPY --chown=nginx:nginx --from=build /app/dist/*/browser /usr/share/nginx/html
+COPY --chown=nginx:nginx --from=build /dist/*/browser /usr/share/nginx/html
 USER nginx
 EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
